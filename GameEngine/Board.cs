@@ -6,38 +6,42 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
+    public delegate void BoardChangeInvokerEventHandler(int i_Row, int i_Col,char Symbol);
     public class Board
     {
         private char[,] m_Board;
         private int m_NumberOfEmptySpots;
-       
+        public event BoardChangeInvokerEventHandler m_BoardChangeEvent;
+
         public Board(int i_BoardSize)
         {
             m_Board = new char[i_BoardSize, i_BoardSize];
+            ResetBoard();
             m_NumberOfEmptySpots = (int)Math.Pow(i_BoardSize, 2);
+            
         }
-        
+
         public int NumberOfEmptySpots
         {
-            get 
+            get
             {
-                return m_NumberOfEmptySpots; 
+                return m_NumberOfEmptySpots;
             }
         }
-        
+
         public int Length
         {
-            get 
-            { 
+            get
+            {
                 return m_Board.GetLength(0);
             }
         }
-        
+
         private bool isEmptyCell(int i_Row, int i_Column)
         {
             return (isInBounds(i_Row, i_Column)) && (m_Board[i_Row, i_Column] == ' ');
         }
-        
+
         private bool checkLoseRow(int i_Row, int i_Column)
         {
             bool isLose;
@@ -76,7 +80,7 @@ namespace GameEngine
 
             return isLose;
         }
-       
+
         private bool checkLoseColumn(int i_Row, int i_Column)
         {
             bool isLose;
@@ -115,7 +119,7 @@ namespace GameEngine
 
             return isLose;
         }
-       
+
         private bool checkLoseDiagonalTopRightToBottomLeft(int i_Row, int i_Column)
         {
             bool isLose;
@@ -154,7 +158,7 @@ namespace GameEngine
 
             return isLose;
         }
-        
+
         private bool checkLoseDiagonalTopLeftToBottomRight(int i_Row, int i_Column)
         {
             bool isLose;
@@ -199,7 +203,7 @@ namespace GameEngine
             return checkLoseRow(i_Row, i_Column) || checkLoseColumn(i_Row, i_Column) || checkLoseDiagonalTopRightToBottomLeft(i_Row, i_Column)
                    || checkLoseDiagonalTopLeftToBottomRight(i_Row, i_Column);
         }
-       
+
         public Result AddMove(Player i_Player, int i_Row, int i_Column)
         {
             Result resultOfMove;
@@ -242,18 +246,18 @@ namespace GameEngine
 
             return resultOfMove;
         }
-        
+
         public void ResetBoard()
         {
             for (int i = 0; i < m_Board.GetLength(0); i++)
             {
                 for (int j = 0; j < m_Board.GetLength(0); j++)
                 {
-                    m_Board[i, j] = ' ';
+                    SetCell(i, j, ' ');
                 }
             }
         }
-       
+
         public override string ToString()
         {
             StringBuilder boardAsString = new StringBuilder((m_Board.GetLength(0) + 1) * (m_Board.GetLength(1) + 1));
@@ -280,7 +284,7 @@ namespace GameEngine
 
             return boardAsString.ToString();
         }
-        
+
         public bool SetCell(int i_Row, int i_Column, char i_Symbol)
         {
             bool isSetMethodWorked;
@@ -288,6 +292,10 @@ namespace GameEngine
             if (isInBounds(i_Row, i_Column))
             {
                 m_Board[i_Row, i_Column] = i_Symbol;
+                if (m_BoardChangeEvent != null)
+                {
+                    m_BoardChangeEvent.Invoke(i_Row, i_Column, i_Symbol);
+                }
                 if (i_Symbol != ' ')
                 {
                     m_NumberOfEmptySpots--;
@@ -306,7 +314,7 @@ namespace GameEngine
 
             return isSetMethodWorked;
         }
-        
+
         public char GetCell(int i_Row, int i_Column)
         {
             char charToReturn;
@@ -322,15 +330,15 @@ namespace GameEngine
 
             return charToReturn;
         }
-        
+
         private bool isInBounds(int i_Row, int i_Column)
         {
             return (i_Row >= 0 && i_Row < m_Board.GetLength(0)) && (i_Column >= 0 && i_Column < m_Board.GetLength(0));
         }
-       
+
         public Board Clone()
         {
-            Board boardToReturn = new Board(m_Board.Length);
+            Board boardToReturn = new Board(m_Board.GetLength(0));
 
             boardToReturn.m_Board = (char[,])m_Board.Clone();
             boardToReturn.m_NumberOfEmptySpots = m_NumberOfEmptySpots;

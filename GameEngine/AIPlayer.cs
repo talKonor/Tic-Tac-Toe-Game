@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
-    class AiPlayer
+    public static class AiPlayer
     {
         enum eScoreType
         {

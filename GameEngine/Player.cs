@@ -8,12 +8,14 @@ namespace GameEngine
 {
     public class Player
     {
+        private string m_PlayerName;
         private int m_PlayerNumber;
         private char m_Symbol;
         private int m_Score;
 
-        public Player(int i_PlayerNumber, char i_Symbol)
+        public Player(string i_PlayerName,int i_PlayerNumber, char i_Symbol)
         {
+            m_PlayerName = i_PlayerName;
             m_PlayerNumber = i_PlayerNumber;
             m_Symbol = i_Symbol;
             m_Score = 0;
@@ -57,5 +59,18 @@ namespace GameEngine
                 m_PlayerNumber = value;
             }
         }
+        public string PlayerName
+        {
+            get
+            {
+                return m_PlayerName;
+            }
+
+            set
+            {
+                m_PlayerName = value;
+            }
+        }
+
     }
 }

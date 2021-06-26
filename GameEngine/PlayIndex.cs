@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
-    struct PlayIndex
+    public struct PlayIndex
     {
         public int m_RowNumber;
         public int m_ColumnNumber;

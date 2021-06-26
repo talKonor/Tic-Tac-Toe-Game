@@ -14,10 +14,10 @@ namespace GameEngine
 
         public enum eEndGameStatus
         {
-            NotOver,
-            Player1Won,
-            Player2Won,
-            Tie
+            NotOver=-1,
+            Player1Won=1,
+            Player2Won=2,
+            Tie=0
         }
 
         public Result(eEndGameStatus i_EndGameStatus, bool i_WasLegalMove, string i_Message)
