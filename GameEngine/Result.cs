@@ -8,9 +8,9 @@ namespace GameEngine
 {
     public class Result
     {
-        private readonly eEndGameStatus m_EndGameStatus;
-        private readonly bool m_WasLegalMove;
-        private readonly string m_Message;
+        private readonly eEndGameStatus r_EndGameStatus;
+        private readonly bool r_WasLegalMove;
+        private readonly string r_Message;
 
         public enum eEndGameStatus
         {
@@ -22,16 +22,16 @@ namespace GameEngine
 
         public Result(eEndGameStatus i_EndGameStatus, bool i_WasLegalMove, string i_Message)
         {
-            m_EndGameStatus = i_EndGameStatus;
-            m_WasLegalMove = i_WasLegalMove;
-            m_Message = i_Message;
+            r_EndGameStatus = i_EndGameStatus;
+            r_WasLegalMove = i_WasLegalMove;
+            r_Message = i_Message;
         }
 
         public eEndGameStatus EndGameStatus
         {
             get
             {
-                return m_EndGameStatus;
+                return r_EndGameStatus;
             }
         }
 
@@ -39,7 +39,7 @@ namespace GameEngine
         {
             get
             {
-                return m_WasLegalMove;
+                return r_WasLegalMove;
             }
         }
 
@@ -47,7 +47,7 @@ namespace GameEngine
         {
             get
             {
-                return m_Message;
+                return r_Message;
             }
         }
 

@@ -11,7 +11,7 @@ namespace GameEngine
     {
         private char[,] m_Board;
         private int m_NumberOfEmptySpots;
-        public event BoardChangeInvokerEventHandler m_BoardChangeEvent;
+        public event BoardChangeInvokerEventHandler BoardChangeEvent;
 
         public Board(int i_BoardSize)
         {
@@ -292,9 +292,9 @@ namespace GameEngine
             if (isInBounds(i_Row, i_Column))
             {
                 m_Board[i_Row, i_Column] = i_Symbol;
-                if (m_BoardChangeEvent != null)
+                if (BoardChangeEvent != null)
                 {
-                    m_BoardChangeEvent.Invoke(i_Row, i_Column, i_Symbol);
+                    BoardChangeEvent.Invoke(i_Row, i_Column, i_Symbol);
                 }
                 if (i_Symbol != ' ')
                 {

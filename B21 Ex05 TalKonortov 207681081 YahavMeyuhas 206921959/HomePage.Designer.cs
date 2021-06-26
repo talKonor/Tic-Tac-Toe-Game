@@ -33,13 +33,13 @@ namespace GUI
             this.ColNumber = new System.Windows.Forms.NumericUpDown();
             this.RowNumber = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.Rows = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CheckBoxIsHuman = new System.Windows.Forms.CheckBox();
             this.Player2Name = new System.Windows.Forms.TextBox();
             this.Player1Name = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Player1 = new System.Windows.Forms.Label();
+            this.Players = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.ColNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RowNumber)).BeginInit();
@@ -55,7 +55,7 @@ namespace GUI
             this.buttonStart.TabIndex = 11;
             this.buttonStart.Text = "Start!";
             this.buttonStart.UseVisualStyleBackColor = true;
-            this.buttonStart.Click += new System.EventHandler(this.button2_Click);
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
             // ColNumber
             // 
@@ -79,7 +79,7 @@ namespace GUI
             0,
             0,
             0});
-            this.ColNumber.ValueChanged += new System.EventHandler(this.ColNumber_ValueChanged);
+            this.ColNumber.ValueChanged += new System.EventHandler(this.numericUpDownCols_ValueChanged);
             // 
             // RowNumber
             // 
@@ -103,7 +103,7 @@ namespace GUI
             0,
             0,
             0});
-            this.RowNumber.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.RowNumber.ValueChanged += new System.EventHandler(this.numericUpDownRows_ValueChanged);
             // 
             // label5
             // 
@@ -115,16 +115,16 @@ namespace GUI
             this.label5.TabIndex = 7;
             this.label5.Text = "Cols:";
             // 
-            // label4
+            // Rows
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(54, 294);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 32);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Rows:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.Rows.AutoSize = true;
+            this.Rows.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rows.Location = new System.Drawing.Point(54, 294);
+            this.Rows.Name = "Rows";
+            this.Rows.Size = new System.Drawing.Size(93, 32);
+            this.Rows.TabIndex = 6;
+            this.Rows.Text = "Rows:";
+            this.Rows.Click += new System.EventHandler(this.labelRows_Click);
             // 
             // label3
             // 
@@ -146,7 +146,7 @@ namespace GUI
             this.CheckBoxIsHuman.TabIndex = 0;
             this.CheckBoxIsHuman.Text = "Player 2:";
             this.CheckBoxIsHuman.UseVisualStyleBackColor = false;
-            this.CheckBoxIsHuman.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.CheckBoxIsHuman.CheckedChanged += new System.EventHandler(this.checkBoxIsHuman_CheckedChanged);
             // 
             // Player2Name
             // 
@@ -171,27 +171,27 @@ namespace GUI
             this.Player1Name.TabIndex = 3;
             this.Player1Name.TextChanged += new System.EventHandler(this.Player1Name_TextChanged);
             // 
-            // label2
+            // Player1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(88, 90);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 29);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Player 1:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.Player1.AutoSize = true;
+            this.Player1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Player1.Location = new System.Drawing.Point(88, 90);
+            this.Player1.Name = "Player1";
+            this.Player1.Size = new System.Drawing.Size(159, 44);
+            this.Player1.TabIndex = 1;
+            this.Player1.Text = "Player 1:";
+            this.Player1.Click += new System.EventHandler(this.labelPlayer1_Click);
             // 
-            // label1
+            // Players
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 32);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Players:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.Players.AutoSize = true;
+            this.Players.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Players.Location = new System.Drawing.Point(26, 47);
+            this.Players.Name = "Players";
+            this.Players.Size = new System.Drawing.Size(118, 32);
+            this.Players.TabIndex = 0;
+            this.Players.Text = "Players:";
+            this.Players.Click += new System.EventHandler(this.labelPlayers_Click);
             // 
             // fileSystemWatcher1
             // 
@@ -207,13 +207,13 @@ namespace GUI
             this.Controls.Add(this.ColNumber);
             this.Controls.Add(this.RowNumber);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Rows);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.CheckBoxIsHuman);
             this.Controls.Add(this.Player2Name);
             this.Controls.Add(this.Player1Name);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Player1);
+            this.Controls.Add(this.Players);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -234,13 +234,13 @@ namespace GUI
         private System.Windows.Forms.NumericUpDown ColNumber;
         private System.Windows.Forms.NumericUpDown RowNumber;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label Rows;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox CheckBoxIsHuman;
         private System.Windows.Forms.TextBox Player2Name;
         private System.Windows.Forms.TextBox Player1Name;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Players;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.Label Player1;
     }
 }

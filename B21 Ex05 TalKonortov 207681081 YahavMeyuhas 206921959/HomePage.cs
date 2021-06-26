@@ -13,8 +13,9 @@ namespace GUI
 {
     public partial class HomePage : Form
     {
-        bool m_IsAi;
-        Engine m_Engine;
+        private bool m_IsAi;
+        private Engine m_Engine;
+        
         public HomePage()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace GUI
                 return m_IsAi;
             }
         }
+        
         public Engine Engine
         {
             get
@@ -35,22 +37,7 @@ namespace GUI
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxIsHuman_CheckedChanged(object sender, EventArgs e)
         {
             if (Player2Name.Enabled)
             {
@@ -60,23 +47,24 @@ namespace GUI
             {
                 Player2Name.Text = "";
             }
+
             Player2Name.Enabled = !Player2Name.Enabled;
             m_IsAi = Player2Name.Enabled;
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void numericUpDownRows_ValueChanged(object sender, EventArgs e)
         {
             ColNumber.Value = RowNumber.Value;
         }
 
-        private void ColNumber_ValueChanged(object sender, EventArgs e)
+        private void numericUpDownCols_ValueChanged(object sender, EventArgs e)
         {
             RowNumber.Value = ColNumber.Value;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonStart_Click(object sender, EventArgs e)
         {
-            int boardSize = (int)RowNumber.Value;
+            int boardSize = Convert.ToInt32(RowNumber.Value);
             string player1Name = Player1Name.Text;
             string player2Name;
             
@@ -91,12 +79,23 @@ namespace GUI
             
             m_Engine = new Engine(boardSize, player1Name, player2Name);
             m_IsAi = !CheckBoxIsHuman.Checked;
-            this.Close();
+            Close();
         }
 
         private void Player1Name_TextChanged(object sender, EventArgs e)
         {
+        }
 
+        private void labelPlayers_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void labelPlayer1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void labelRows_Click(object sender, EventArgs e)
+        {
         }
     }
 }

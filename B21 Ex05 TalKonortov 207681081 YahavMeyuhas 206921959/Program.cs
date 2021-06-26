@@ -11,11 +11,7 @@ namespace GUI
     {
         public static void  Main()
         {
-            HomePage homePage = new HomePage();
-            homePage.ShowDialog();
-
-            BoardGUI boardGUI = new BoardGUI(homePage.Engine, homePage.IsAi);
-            boardGUI.ShowDialog();
+            TicTacToe.StartGame();
         }
     }
 }

@@ -9,22 +9,22 @@ using GameEngine;
 namespace GUI
 {
     public delegate void ChoseInvokerEventHandler(object sender);
-    class BoardTile : Button
+    internal class BoardTile : Button
     {
-        struct Pos
+        private struct Position
         {
             internal int m_Row;
             internal int m_Col;
-            public Pos(int i_Row, int i_Col)
+            public Position(int i_Row, int i_Col)
             {
                 m_Row = i_Row;
                 m_Col = i_Col;
             }
         }
 
-        Pos m_Position;
-        Engine m_Engine;
-        public event ChoseInvokerEventHandler m_Chosen;
+        private readonly int r_TileSize;
+        private Position m_Position;
+        public event ChoseInvokerEventHandler Chosen;
 
         public int Row
         {
@@ -33,6 +33,7 @@ namespace GUI
                 return m_Position.m_Row;
             }
         }
+
         public int Col
         {
             get
@@ -40,21 +41,21 @@ namespace GUI
                 return m_Position.m_Col;
             }
         }
-        public BoardTile(Engine i_Engine, int i_Row, int i_Col)
-        {
-            m_Engine = i_Engine;
-            m_Position = new Pos(i_Row, i_Col);
-            this.Width = 50;
-            this.Height = 50;
 
+        public BoardTile(int i_Row, int i_Col, int i_TileSize)
+        {
+            m_Position = new Position(i_Row, i_Col);
+            r_TileSize = i_TileSize;
+            Width = r_TileSize;
+            Height = r_TileSize;
         }
 
         protected override void OnClick(EventArgs e)
         {
             base.OnClick(e);
-            if (m_Chosen != null)
+            if (Chosen != null)
             {
-                m_Chosen.Invoke(this);
+                Chosen.Invoke(this);
             }
         }
     }

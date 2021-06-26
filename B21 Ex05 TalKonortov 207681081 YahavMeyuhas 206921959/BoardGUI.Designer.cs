@@ -1,5 +1,4 @@
-﻿
-namespace GUI
+﻿namespace GUI
 {
     partial class BoardGUI
     {
@@ -104,7 +103,7 @@ namespace GUI
             this.MaximizeBox = false;
             this.Name = "BoardGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BoardGUI";
+            this.Text = "TicTacToeMisere";
             this.Load += new System.EventHandler(this.BoardGUI_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();

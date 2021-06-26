@@ -92,7 +92,7 @@ namespace GameEngine
 
         public void SubscribeToBoardChanges(BoardChangeInvokerEventHandler i_OnBoardChangeFunction) 
         {
-            m_Board.m_BoardChangeEvent += i_OnBoardChangeFunction;
+            m_Board.BoardChangeEvent += i_OnBoardChangeFunction;
         }
     }
 }
