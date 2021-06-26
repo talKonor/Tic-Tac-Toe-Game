@@ -50,6 +50,8 @@ namespace GUI
             // 
             // Player1Score
             // 
+            this.Player1Score.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Player1Score.AutoSize = true;
             this.Player1Score.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Player1Score.Location = new System.Drawing.Point(82, 0);
@@ -81,13 +83,14 @@ namespace GUI
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.Controls.Add(this.Player1Name);
             this.flowLayoutPanel1.Controls.Add(this.Player1Score);
             this.flowLayoutPanel1.Controls.Add(this.Player2Name);
             this.flowLayoutPanel1.Controls.Add(this.Player2Score);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(143, 436);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(140, 436);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(209, 27);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(677, 27);
             this.flowLayoutPanel1.TabIndex = 5;
             // 
             // BoardGUI

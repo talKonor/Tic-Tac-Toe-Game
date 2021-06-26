@@ -155,6 +155,7 @@ namespace GUI
             this.Player2Name.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.Player2Name.Location = new System.Drawing.Point(243, 141);
             this.Player2Name.MaximumSize = new System.Drawing.Size(174, 26);
+            this.Player2Name.MaxLength = 20;
             this.Player2Name.Name = "Player2Name";
             this.Player2Name.Size = new System.Drawing.Size(174, 33);
             this.Player2Name.TabIndex = 4;
@@ -164,6 +165,7 @@ namespace GUI
             // 
             this.Player1Name.Location = new System.Drawing.Point(243, 94);
             this.Player1Name.MaximumSize = new System.Drawing.Size(174, 26);
+            this.Player1Name.MaxLength = 20;
             this.Player1Name.Name = "Player1Name";
             this.Player1Name.Size = new System.Drawing.Size(174, 26);
             this.Player1Name.TabIndex = 3;
@@ -217,7 +219,7 @@ namespace GUI
             this.MinimizeBox = false;
             this.Name = "HomePage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HomePage";
+            this.Text = "Game Settings";
             ((System.ComponentModel.ISupportInitialize)(this.ColNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RowNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();

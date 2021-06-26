@@ -21,7 +21,7 @@ namespace GUI
                 m_Col = i_Col;
             }
         }
-        char m_Sign = ' ';
+
         Pos m_Position;
         Engine m_Engine;
         public event ChoseInvokerEventHandler m_Chosen;

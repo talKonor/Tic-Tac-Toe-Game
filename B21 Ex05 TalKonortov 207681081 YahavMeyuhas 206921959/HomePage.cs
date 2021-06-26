@@ -22,8 +22,8 @@ namespace GUI
 
         public bool IsAi
         {
-            get 
-            { 
+            get
+            {
                 return m_IsAi;
             }
         }
@@ -54,7 +54,7 @@ namespace GUI
         {
             if (Player2Name.Enabled)
             {
-                Player2Name.Text ="[Computer]";
+                Player2Name.Text = "[Computer]";
             }
             else
             {
@@ -78,7 +78,17 @@ namespace GUI
         {
             int boardSize = (int)RowNumber.Value;
             string player1Name = Player1Name.Text;
-            string player2Name = Player2Name.Text;
+            string player2Name;
+            
+            if (!CheckBoxIsHuman.Checked)
+            {
+                player2Name = "Computer";
+            }
+            else
+            {
+                player2Name = Player2Name.Text;
+            }
+            
             m_Engine = new Engine(boardSize, player1Name, player2Name);
             m_IsAi = !CheckBoxIsHuman.Checked;
             this.Close();
